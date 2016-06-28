@@ -1,0 +1,24 @@
+The program is broken into two processes. One is the sender, the other is the reciever.
+
+The code was taken from the skeleton code provided on Titanium.
+
+The sender is the first process that begins execution. 
+The sender will create a key and assign it to a shared memory location.
+The sender will then create a message queue (via key) and store the IDs
+	into shared memory.
+
+The sender will then open the file, and begin transferring that file
+	into the message queue. 
+
+Once complete, the sender will send a message stating that it is done.
+
+At this point, the reciever begins execution. The reciever will generate a key
+	and then attach to a shared memory address.
+
+Once the reciever has attached itself to the message queue, it will
+	begin to recieve the message and write to recvfile
+
+Once the full message has been passed to recvfile, the sender will detach
+	from shared memory, and the shared memory pointers will be deallocated
+
+The program then exits, cleaning up the rest of the utilized memory.
